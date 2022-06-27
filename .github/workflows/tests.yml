@@ -1,0 +1,37 @@
+name: Run lint and python
+
+# dispara ação em qualquer push no github remoto
+on: [push]
+
+jobs:
+  # 'build' é o nome do job
+  build:
+  # define ambiente de execução da action
+  runs-on: ubuntu-latest
+
+  strategy:
+    matrix:
+      # define a versão do python a ser executada nos testes
+      python-version: [3.10]
+
+    # passos para completar o job
+    steps:
+      # faz checkout do repositório
+      - name: Checkout repository
+        uses: action/checkout@v2
+
+      # definindo versão python
+      - name: Configurando python ${{ matrix.python-version }}
+        uses: action/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # instalar projeto
+      - name: Construindo containers docker
+        run: |
+          make run
+
+      # formatar código com black
+      - name: Formatando código
+        run: |
+          make black

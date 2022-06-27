@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "Desafio 1 FastAPI"
+version = "0.1.0"
+description = "Desafio para Vaga Desenvolvedor Backend JR Python"
+authors = ["Mario N Junior"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.78.0"
+uvicorn = "^0.17.6"
+databases = "^0.6.0"
+SQLAlchemy = "^1.4.37"
+alembic = "^1.8.0"
+asyncpg = "^0.25.0"
+psycopg2-binary = "^2.9.3"
+python-jose = "^3.3.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+requests = "^2.28.0"
+black = "^22.3.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
